@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1>Ваши задания</h1>
+    <a href="/home/Create" class="btn btn-secondary">Добавить Задание</a>
+</div>
+<br>
+{% for quest in quests%}
+<div class="col-md6 border rounded">
+    <h2>{{quest.topic}}</h2>
+    <h3>
+        {{quest.questions}}
+    </h3>
+    <p>Предмет - {{quest.subject}}</p>
+    <div>
+        Дата создание - {{quest.created_at}}
+    </div>
+    <a href="/home/Change{{ quest.id }}" class="btn btn-warning">
+        Редактировать
+    </a>
+    <a href="/quizes_delete/{{ quest.id }}" class="btn btn-danger">
+            Удалить
+        </a>
+</div>
+<br>
+{% endfor %}
+
+{% endblock %}
